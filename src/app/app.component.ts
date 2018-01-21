@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-const sha256 = require('sha256');
+import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,8 +6,4 @@ const sha256 = require('sha256');
 })
 export class AppComponent {
   title = 'BlockChain demo';
-  demo = sha256('BlockChain demo');
-  hash = sha256('h');
-  textValue = 'initial value';
-  log = '';
 }

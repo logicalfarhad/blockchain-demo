@@ -1,36 +1,15 @@
-<div class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">{{title}}</a>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-    </ul>
+<div class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/hash">{{title}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLinkActive="active" routerLink="/hash">Hash</a></li>
+        <li><a routerLinkActive="active" routerLink="/block">Block</a></li>
+        <li><a routerLinkActive="active" routerLink="/blockChain">BlockChain</a></li>
+      </ul>
+    </div>
   </div>
 </div>
-<div class="container">
-  <h1>SHA256 Hash</h1>
-  <div id="well1" class="well">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label for="data" class="col-sm-2 control-label">Data:</label>
-        <div class="col-sm-10">
-          <textarea id="data" rows="10" onkeyup="" class="form-control"></textarea>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="hash" class="col-sm-2 control-label">Hash:</label>
-        <div class="col-sm-10">
-          <input id="hash" type="text" disabled="disabled" class="form-control" [(ngModel)]="hash"/>
-          <input #textbox type="text" [(ngModel)]="textValue" required>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<router-outlet></router-outlet>
