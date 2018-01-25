@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Block } from '../../Block';
+import {Component} from '@angular/core';
+import {Block} from '../../Block';
 
 const sha256 = require('sha256');
 
@@ -9,30 +9,31 @@ const sha256 = require('sha256');
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent {
-  hashVal = '';
   maximumNonce = 500000;
   _block: Block;
+
   constructor() {
     this._block = new Block('1', '72608', '');
-    this.hashVal = sha256(this.getAllTextValue());
   }
 
-  private generateHash(): void {
-    this.hashVal = sha256(this.getAllTextValue());
+  generateHash(): string {
+    return sha256(this.getAllTextValue());
   }
-  private getAllTextValue() {
-    return this._block.block + this._block.nonce + this._block.data;
+
+  checkValid(): boolean {
+    return this.generateHash().substr(0, 4) === '0000';
   }
-  private checkValid(hashVal): boolean {
-    return hashVal.substr(0, 4) === '0000';
-  }
+
   mine() {
     for (let i = 0; i <= this.maximumNonce; i++) {
       this._block.nonce = i.toString(10);
-      this.hashVal = sha256(this.getAllTextValue());
-      if (this.checkValid(this.hashVal)) {
+      if (this.checkValid()) {
         break;
       }
     }
+  }
+
+  private getAllTextValue() {
+    return this._block.block + this._block.nonce + this._block.data;
   }
 }

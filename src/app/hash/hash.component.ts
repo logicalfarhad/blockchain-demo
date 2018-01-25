@@ -8,13 +8,13 @@ const sha256 = require('sha256');
   styleUrls: ['./hash.component.css']
 })
 export class HashComponent {
-  hashVal = '';
-  data = '';
+  data: string;
 
   constructor() {
-    this.hashVal = sha256(this.data);
+    this.data = '';
   }
-  private generateHash(): void {
-    this.hashVal = sha256(this.data);
+
+  generateHash(): string {
+    return sha256(this.data);
   }
 }
